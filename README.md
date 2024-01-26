@@ -1,30 +1,33 @@
-# data-platform-api-project-creates-rmq-kube
-data-platform-api-project-creates-rmq-kube は、周辺業務システム　を データ連携基盤 と統合することを目的に、API でプロジェクトデータを登録/更新するマイクロサービスです。
+# data-platform-api-freight-agreement-creates-rmq-kube
+data-platform-api-freight-agreement-creates-rmq-kube は、周辺業務システム　を データ連携基盤 と統合することを目的に、API で輸送契約データを登録/更新するマイクロサービスです。
 
-* https://xxx.xxx.io/api/API_PROJECT_SRV/creates/
-* https://xxx.xxx.io/api/API_PROJECT_SRV/updates/
+* https://xxx.xxx.io/api/API_FREIGHT_AGREEMENT_SRV/creates/
+* https://xxx.xxx.io/api/API_FREIGHT_AGREEMENT_SRV/updates/
 
 ## 動作環境
 
-data-platform-api-project-creates-rmq-kube の動作環境は、次の通りです。  
+data-platform-api-freight-agreement-creates-rmq-kube の動作環境は、次の通りです。  
 ・ OS: LinuxOS （必須）  
 ・ CPU: ARM/AMD/Intel（いずれか必須）  
 
 ## 本レポジトリ が 対応する API サービス
-data-platform-api-project-creates-rmq-kube が対応する APIサービス は、次のものです。
+data-platform-api-freight-agreement-creates-rmq-kube が対応する APIサービス は、次のものです。
 
-* APIサービス URL: https://xxx.xxx.io/api/API_PROJECT_SRV/creates/
-* APIサービス URL: https://xxx.xxx.io/api/API_PROJECT_SRV/updates/
+* APIサービス URL: https://xxx.xxx.io/api/API_FREIGHT_AGREEMENT_SRV/creates/
+* APIサービス URL: https://xxx.xxx.io/api/API_FREIGHT_AGREEMENT_SRV/updates/
 
 ## 本レポジトリ に 含まれる API名
-data-platform-api-project-creates-rmq-kube には、次の API をコールするためのリソースが含まれています。  
+data-platform-api-freight-agreement-creates-rmq-kube には、次の API をコールするためのリソースが含まれています。  
 
-* A_Project（プロジェクト - 基本データ）
-* A_WBSElement（プロジェクト - WBS要素データ）
-* A_Network（プロジェクト - ネットワークデータ）
+* A_Header（輸送契約 - ヘッダデータ）
+* A_Item（輸送契約 - 明細データ）
+* A_ItemAvailableFreight（輸送契約 - 明細利用可能便データ）
+* A_Partner（輸送契約 - 取引先データ）
+* A_Address（輸送契約 - 住所データ）
+
 
 ## API への 値入力条件 の 初期値
-data-platform-api-project-creates-rmq-kube において、API への値入力条件の初期値は、入力ファイルレイアウトの種別毎に、次の通りとなっています。  
+data-platform-api-freight-agreement-creates-rmq-kube において、API への値入力条件の初期値は、入力ファイルレイアウトの種別毎に、次の通りとなっています。  
 
 ## データ連携基盤のAPIの選択的コール
 
@@ -101,7 +104,7 @@ func (c *DPFMAPICaller) AsyncCreates(
 
 ## Output  
 本マイクロサービスでは、[golang-logging-library-for-data-platform](https://github.com/latonaio/golang-logging-library-for-data-platform) により、以下のようなデータがJSON形式で出力されます。  
-以下の sample.json の例は プロジェクト の プロジェクトデータ が登録/更新された結果の JSON の例です。  
+以下の sample.json の例は 輸送契約 の 輸送契約データ が登録/更新された結果の JSON の例です。  
 以下の項目のうち、"Project" ～ "IsMarkedForDeletion" は、/DPFM_API_Output_Formatter/type.go 内 の Type Project {} による出力結果です。"cursor" ～ "time"は、golang-logging-library による 定型フォーマットの出力結果です。  
 
 ```
